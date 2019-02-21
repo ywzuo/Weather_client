@@ -1,0 +1,12 @@
+
+客户端的创建的步骤
+1、百度：找到提供天气预报信息的Webservice的网络地址
+ 例如：http://www.webxml.com.cn/webservices/weatherwebservice.asmx
+2、找到wsld在网址后面加上参数
+例如http://www.webxml.com.cn/webservices/weatherwebservice.asmx?wsdl
+3、创建空的java工程
+4、打开cmd，切换到工程的src目录下：
+wsimport -keep http://www.webxml.com.cn/webservices/weatherwebservice.asmx?wsdl
+5、如果出现报s:schema错误
+解决错误，把wsdl代码以wsdl的格式报错下来，然后将文件中的 <s:element ref="s:schema" /><s:any /> 替换成 <s:any minOccurs="2" maxOccurs="2"/>
+之后再去执行wsimport -keep命令，后面跟保存下来的文件路径。
